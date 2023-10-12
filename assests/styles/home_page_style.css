@@ -710,7 +710,7 @@ header>div>a>button:hover {
     width: 100%;
     height: 100%;
     background-image: url('/assests/img/aboutme_bg.jpg');
-    background-size: cover;
+    background-size: 110vw;
     background-position: center;
 }
 
