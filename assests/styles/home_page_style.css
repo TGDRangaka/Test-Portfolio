@@ -486,8 +486,6 @@ header>div>a>button:hover {
     background-position: center;
     position: relative;
     overflow: hidden;
-
-    border-bottom: 3px solid #080A08;
 }
 
 .disort-bg{
@@ -711,9 +709,10 @@ header>div>a>button:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/assests/img/aboutme_bg.jpg');
-    background-size: 110vw;
+    background-image: url('/assests/img/aboutme_bg2.jpg');
+    background-size: cover;
     background-position: center;
+    filter: opacity(50%);
 }
 
 #aboutme>section {
@@ -898,34 +897,16 @@ p span {
     --resume-point-width: 30px;
 }
 
-#resume {
-    /* height: 100vh; */
-}
-
 .resume-bg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-}
-.resume-bg div {
-    left: 0;
-    width: 100%;
-    height: 50%;
-    /* aspect-ratio: 16/9; */
-    background-size: 100vw;
-    background-position: top;
     filter: opacity(40%);
-}
-.resume-bg div:first-child {
-    top: 0;
-    background-image: url('/assests/img/resume_bg.jpg');
-}
-.resume-bg div:last-child {
-    bottom: 0;
-    background-image: url('/assests/img/resume_bg.jpg');
-    transform: rotate(180deg);
+    background-size: cover;
+    background-position: center;
+    background-image: url('/assests/img/resume_bg2.jpg');
 }
 
 .education {
@@ -1011,7 +992,7 @@ p span {
 .edu-des p {
     font-size: 32px;
     font-family: 'Poppins', sans-serif;
-    font-weight: 100;
+    font-weight: 200;
 }
 
 .edu-point:last-child .point {
@@ -1273,24 +1254,10 @@ p span {
     left: 0;
     width: 100%;
     height: 100%;
-}
-
-.project-bg div {
-    left: 0;
-    width: 100%;
-    height: 50%;
-    background-size: 100vw;
+    background-size: cover;
     background-position: top;
     filter: opacity(40%);
-}
-.project-bg div:first-child {
-    top: 0;
-    background-image: url('/assests/img/project_bg.jpg');
-}
-.project-bg div:last-child {
-    bottom: 0;
-    background-image: url('/assests/img/project_bg.jpg');
-    transform: rotate(180deg) rotateY(180deg);
+    background-image: url('/assests/img/project_bg2.jpg');
 }
 
 .project_section {
@@ -1660,8 +1627,8 @@ form>button:hover {
 
 /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ footer ////////////////////////////////// */
 
-footer>hr {
-    border: 1px solid #30FF68;
+hr {
+    border: 1px solid #30ff67;
 }
 
 footer>p {
@@ -1679,7 +1646,7 @@ footer>p {
     --glass-color: rgba(255, 255, 255, 0.01);
 
     background: linear-gradient(to right, var(--glass-color), var(--glass-color) );
-    backdrop-filter: blur(7px);
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(7px);
     border: 1px solid rgba(48, 255, 104, .25);
 }
