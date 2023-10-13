@@ -147,7 +147,7 @@ main {
 }
 /* \\\\\\\\\\\\\\\\\\\\\\\\\\ preloader \\\\\\\\\\\\\\\\\\\\\\ */
 .preloader {
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
@@ -214,28 +214,29 @@ main {
 .loading {
     position: relative;
     margin-top: 30px;
-    overflow: hidden;
     height: 8px;
     border-radius: 20px;
     border: 1px solid #30FF68;
 }
 
 .loading> .line {
-    width: 200%;
-    height: 8px;
+    width: 0%;
+    height: 100%;
     background: #30FF68;
     position: absolute;
-    left: -200%;
 
-    animation: load_line calc(var(--loading-duration) * 2) linear;
+    /* animation: load_line calc(var(--loading-duration) + .2s) linear; */
+}
+.loading-percentage {
+    position: relative;
 }
 
 @keyframes load_line {
     0% {
-        left: -200%;
+        width: 0%;
     }
     100% {
-        left: 0%;
+        width: 100%;
     }
 }
 
@@ -494,11 +495,12 @@ header>div>a>button:hover {
     height: 100%;
     position: absolute;
     background-image: url("/assests/img/disort_effect.jpg");
-    background-size: cover;
+    background-size: 103vw;
     background-position: center;
     top: 0;
     right: 0;
     mix-blend-mode: color-dodge;
+    animation: float 5s ease-in-out infinite;
 }
 
 #home>section {
@@ -1203,7 +1205,7 @@ p span {
     background: conic-gradient(
       from 0deg,
       rgb(255, 255, 255),
-      rgba(255, 255, 255, 0.034),
+      rgba(255, 255, 255, 0.02),
       rgba(0, 0, 0, 0)
     );
     -webkit-mask: var(--orbit-mask);
@@ -1244,10 +1246,10 @@ p span {
     background-color: black;
     border-radius: 50%;
     transform: rotateX(90deg) translateY(0px);
-    animation: floatt 10s ease-in-out infinite;
+    animation: float-blackhole 10s ease-in-out infinite;
 }
 
-@keyframes floatt {
+@keyframes float-blackhole {
     0%, 100% {
         transform:  rotateX(90deg)  translateY(-10px);
       }
@@ -1684,11 +1686,11 @@ footer>p {
 
 @keyframes float {
     0%, 100% {
-        transform: translateY(0);
+        transform: translateY(5px);
     }
 
     50% {
-        transform: translateY(-10px);
+        transform: translateY(-5px);
     }
 }
 
