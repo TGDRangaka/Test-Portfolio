@@ -146,52 +146,73 @@ main {
     background: linear-gradient(to bottom, #30FF68, rgba(0, 0, 0, 0) 80%)
 }
 /* \\\\\\\\\\\\\\\\\\\\\\\\\\ preloader \\\\\\\\\\\\\\\\\\\\\\ */
-.preloader {
-    display: none;
+body> .preloader {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100vw;
     height: 100vh;
     position: absolute;
-    background-color: #121212;
     z-index: 1000;
     position: fixed;
     overflow: hidden;
-    transition-duration: 2.4s;
-
-    /*animation: close_preloader calc(var(--loading-duration) + .4s) ease-out reverse;*/
+    background-image: url('/assests/img/preloader_bg.jpg');
+    background-size: cover;
 }
 
-canvas{
-    width: 100vw;
-    height: 100vh;
+.preloader-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.preloader-content {
+    width: 500px;
+    aspect-ratio: 1;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    filter: drop-shadow(15px 4px 10px rgba(0, 174, 255, 0.082));
+}
+
+.preloader-content::before{
+    content: "";
     position: absolute;
+    width: 1000%;
+    height: 150%;
     top: 0;
+    bottom: 0;
+    margin: auto;
+    transform-origin: 5% 50%;
+    transform: rotate(10deg);
+    border: 1px solid blue;
+    transition: 15s;
+    background-image: url('/assests/img/planet-surface.jpg');
+    animation: planet-rotate 100s linear infinite;
 }
 
-.preloader_grid {
-    width: 60vw;
-    aspect-ratio: 19/6;
-    display: grid;
-    grid-template-columns: repeat(19, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    gap: 3px;
+.preloader-content::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    aspect-ratio: 1;
+    transform: rotate(20deg);
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.1), transparent, rgba(0, 0, 0, 1));
+    background-size: cover;
 }
 
-.preloader_grid> .box {
-    background-color: #30FF68;
+.preloader-content:hover::before{
+    transform: rotate(10deg) translateX(-4500px);
 }
 
-@keyframes flip {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 0px 0 #ffffff;
+@keyframes planet-rotate {
+    from {
+        transform: rotate(10deg) translateX(0px);
     }
-    50% {
-        transform: scale(1.3);
-        background-color: #ffffff;
-        z-index: 200;
-        box-shadow: 0 0 30px 1px #ffffff;
+    to {
+        transform: rotate(10deg) translateX(-4500px);
     }
 }
 
@@ -200,6 +221,7 @@ canvas{
     margin-top: 30px;
     height: 8px;
     border-radius: 20px;
+    width: 50vw;
     border: 1px solid #30FF68;
 }
 
@@ -223,110 +245,6 @@ canvas{
     100% {
         width: 100%;
     }
-}
-
-:root {
-    --loading-delay: 0.6s;
-    --loading-duration: 2s;
-    --grid-col-animation-delay: calc(var(--loading-duration) / 20);
-}
-
-.preloader_grid> div:nth-child(1),
-.preloader_grid> div:nth-child(20),
-.preloader_grid> div:nth-child(39),
-.preloader_grid> div:nth-child(58),
-.preloader_grid> div:nth-child(77),
-.preloader_grid> div:nth-child(96) {
-    animation: flip var(--loading-delay) ease-in-out calc((var(--loading-duration) / 16) * 0);
-}
-
-.preloader_grid> div:nth-child(2),
-.preloader_grid> div:nth-child(97) {
-    animation: flip var(--loading-delay) ease-in-out calc((var(--loading-duration) / 16) * 1);
-}
-
-.preloader_grid> div:nth-child(3),
-.preloader_grid> div:nth-child(98) {
-    animation: flip var(--loading-delay) ease-in-out calc((var(--loading-duration) / 16) * 2);
-}
-
-.preloader_grid> div:nth-child(4),
-.preloader_grid> div:nth-child(99) {
-    animation: flip var(--loading-delay) ease-in-out calc((var(--loading-duration) / 16) * 3);
-}
-
-.preloader_grid> div:nth-child(24),
-.preloader_grid> div:nth-child(43),
-.preloader_grid> div:nth-child(62),
-.preloader_grid> div:nth-child(81) {
-    animation: flip var(--loading-delay) ease-in-out calc((var(--loading-duration) / 16) * 4);
-}
-
-.preloader_grid> div:nth-child(7),
-.preloader_grid> div:nth-child(102) {
-    animation: flip var(--loading-delay) ease-in-out calc((var(--loading-duration) / 16) * 5);
-}
-
-.preloader_grid> div:nth-child(8),
-.preloader_grid> div:nth-child(27),
-.preloader_grid> div:nth-child(46),
-.preloader_grid> div:nth-child(65),
-.preloader_grid> div:nth-child(84),
-.preloader_grid> div:nth-child(103) {
-    animation: flip var(--loading-delay) ease-in-out calc((var(--loading-duration) / 16) * 6);
-}
-
-.preloader_grid> div:nth-child(9),
-.preloader_grid> div:nth-child(104) {
-    animation: flip var(--loading-delay) ease-in-out calc((var(--loading-duration) / 16) * 7);
-}
-
-.preloader_grid> div:nth-child(11),
-.preloader_grid> div:nth-child(30),
-.preloader_grid> div:nth-child(49),
-.preloader_grid> div:nth-child(68),
-.preloader_grid> div:nth-child(87),
-.preloader_grid> div:nth-child(106) {
-    animation: flip var(--loading-delay) ease-in-out calc((var(--loading-duration) / 16) * 8);
-}
-
-.preloader_grid> div:nth-child(107) {
-    animation: flip var(--loading-delay) ease-in-out calc((var(--loading-duration) / 16) * 9);
-}
-
-.preloader_grid> div:nth-child(108) {
-    animation: flip var(--loading-delay) ease-in-out calc((var(--loading-duration) / 16) * 10);
-}
-
-.preloader_grid> div:nth-child(34),
-.preloader_grid> div:nth-child(53),
-.preloader_grid> div:nth-child(72),
-.preloader_grid> div:nth-child(91),
-.preloader_grid> div:nth-child(110) {
-    animation: flip var(--loading-delay) ease-in-out calc((var(--loading-duration) / 16) * 11);
-}
-
-.preloader_grid> div:nth-child(16),
-.preloader_grid> div:nth-child(54) {
-    animation: flip var(--loading-delay) ease-in-out calc((var(--loading-duration) / 16) * 12);
-}
-
-.preloader_grid> div:nth-child(17),
-.preloader_grid> div:nth-child(55) {
-    animation: flip var(--loading-delay) ease-in-out calc((var(--loading-duration) / 16) * 13);
-}
-
-.preloader_grid> div:nth-child(18),
-.preloader_grid> div:nth-child(56) {
-    animation: flip var(--loading-delay) ease-in-out calc((var(--loading-duration) / 16) * 14);
-}
-
-.preloader_grid> div:nth-child(38),
-.preloader_grid> div:nth-child(57),
-.preloader_grid> div:nth-child(76),
-.preloader_grid> div:nth-child(95),
-.preloader_grid> div:nth-child(114) {
-    animation: flip var(--loading-delay) ease-in-out calc((var(--loading-duration) / 16) * 15);
 }
 
 /*\\\\\\\\\\\\\\\\\\\\\\\\\\\\header\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
@@ -433,7 +351,7 @@ header>div>a>button:hover {
     position: absolute;
     width: 20%;
     aspect-ratio: 1;
-    background-color: #00f260;
+    background-color: #00f261;
     border-radius: 50%;
     top: -1vw;
     right: -1vw;
@@ -470,7 +388,7 @@ header>div>a>button:hover {
 }
 
 .social_medias li:hover::before {
-    transform: scale(17);
+    /* transform: scale(17); */
 }
 
 .social_medias a{
