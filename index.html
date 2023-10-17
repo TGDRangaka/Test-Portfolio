@@ -32,16 +32,10 @@
 
     <div class="bg"></div>
 
-<section class="preloader bg-image">
-    <div class="preloader-body">
-        <div class="preloader-content"></div>
-        <div class="loading">
-            <div class="line"></div>
-            <h4 class="loading-percentage">00%</h4>
-        </div>
-    </div>
-    
+<section class="preloader">
+        <h4 class="loading-percentage glitch"  data-text="CODE">DILA</h4>
 </section>
+
 <header id="header" class="glass_pane">
     <div class="logo">DILA</div>
     <div class="nav">
@@ -579,9 +573,11 @@
     AOS.init();
 </script>
 <script>
-
     const closePreloader = () => {
-        $(".preloader").eq(0).css("top", "-100vh");
+        $(".preloader").css("opacity", "0%");
+        setTimeout(function(){
+            $(".preloader").css("display", "none");
+        }, 2000);
 
         let letterAniDur = .8;
         let heroSectionAniDur = 1;
@@ -604,21 +600,17 @@
         
     function updateProgress() {
         var percentage = (document.readyState === 'complete') ? 100 : (performance.now() / 1000);
-        console.log(percentage + "%");
-        $(".loading>.line").eq(0).css("width", `${percentage}%`);
-        $(".loading-percentage").text(`${Number.parseInt(percentage)}%`);
-    
         if (percentage < 100) {
             requestAnimationFrame(updateProgress);
         }else if(percentage == 100){
-            setTimeout(closePreloader, 2400);
+            setTimeout(closePreloader, 500);
         }
     }
-    
     window.addEventListener('load', function() {
         updateProgress();
     });
     document.addEventListener('readystatechange', updateProgress);
+
     </script>
 </body>
 </html>
